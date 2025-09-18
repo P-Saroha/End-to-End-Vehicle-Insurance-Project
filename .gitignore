@@ -210,4 +210,4 @@ myenv/
 .marimo_project
 .marimo_workspace/
 .marimo_root
-
+myenv
