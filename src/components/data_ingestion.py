@@ -56,6 +56,8 @@ class DataIngestion:
         logging.info("Entered split_data_as_train_test method of Data_Ingestion class")
 
         try:
+            if dataframe.empty or len(dataframe) == 0:
+                raise ValueError("No data available for train-test split. Check MongoDB connection or data source.")
             train_set, test_set = train_test_split(dataframe, test_size=self.data_ingestion_config.train_test_split_ratio)
             logging.info("Performed train test split on the dataframe")
             logging.info(

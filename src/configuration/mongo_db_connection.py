@@ -1,7 +1,9 @@
+# filepath: [mongo_db_connection.py](http://_vscodecontentref_/3)
 import os
 import sys
 import pymongo
 import certifi
+from dotenv import load_dotenv  # Add this import
 
 from src.exception import MyException
 from src.logger import logging
@@ -44,6 +46,8 @@ class MongoDBClient:
             If there is an issue connecting to MongoDB or if the environment variable for the MongoDB URL is not set.
         """
         try:
+            load_dotenv()  # Load environment variables from .env file
+            
             # Check if a MongoDB client connection has already been established; if not, create a new one
             if MongoDBClient.client is None:
                 mongo_db_url = os.getenv(MONGODB_URL_KEY)  # Retrieve MongoDB URL from environment variables
